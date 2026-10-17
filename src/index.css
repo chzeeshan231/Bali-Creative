@@ -1,0 +1,399 @@
+@font-face { font-family: 'Fraunces'; font-style: normal; font-weight: 400; font-display: swap; src: url('./assets/fonts/fraunces-400.woff2') format('woff2'); }
+@font-face { font-family: 'Fraunces'; font-style: normal; font-weight: 500; font-display: swap; src: url('./assets/fonts/fraunces-500.woff2') format('woff2'); }
+@font-face { font-family: 'Fraunces'; font-style: normal; font-weight: 600; font-display: swap; src: url('./assets/fonts/fraunces-600.woff2') format('woff2'); }
+@font-face { font-family: 'Fraunces'; font-style: normal; font-weight: 700; font-display: swap; src: url('./assets/fonts/fraunces-700.woff2') format('woff2'); }
+@font-face { font-family: 'Inter'; font-style: normal; font-weight: 400; font-display: swap; src: url('./assets/fonts/inter-400.woff2') format('woff2'); }
+@font-face { font-family: 'Inter'; font-style: normal; font-weight: 500; font-display: swap; src: url('./assets/fonts/inter-500.woff2') format('woff2'); }
+@font-face { font-family: 'Inter'; font-style: normal; font-weight: 600; font-display: swap; src: url('./assets/fonts/inter-600.woff2') format('woff2'); }
+@font-face { font-family: 'Inter'; font-style: normal; font-weight: 700; font-display: swap; src: url('./assets/fonts/inter-700.woff2') format('woff2'); }
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  @apply bg-sand-50 text-ink font-sans antialiased selection:bg-clay-500 selection:text-white;
+  overflow-x: hidden;
+}
+
+/* Explicit Emerald & Sand Palette Defaults (Guarantees deep contrast across all environments) */
+.bg-palm-950 {
+  background-color: #03120E !important;
+}
+.bg-palm-900 {
+  background-color: #061E17 !important;
+}
+.bg-palm-800 {
+  background-color: #0A2C23 !important;
+}
+.bg-palm-700 {
+  background-color: #0E3D31 !important;
+}
+.bg-sand-50 {
+  background-color: #FAF7F2 !important;
+}
+.bg-sand-100 {
+  background-color: #F5EFE6 !important;
+}
+
+/* Glass & Editorial Surface Helpers */
+.glass-panel {
+  background: rgba(3, 18, 14, 0.94);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-panel-light {
+  background: rgba(250, 247, 242, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(20, 23, 22, 0.08);
+}
+
+.glass-panel-dark {
+  background: rgba(6, 30, 23, 0.9);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.glass-badge {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+/* Gradients & Lighting */
+.hero-gradient {
+  background: linear-gradient(
+    135deg,
+    rgba(3, 18, 14, 0.96) 0%,
+    rgba(6, 30, 23, 0.9) 35%,
+    rgba(10, 44, 35, 0.72) 70%,
+    rgba(200, 101, 59, 0.25) 100%
+  );
+}
+
+/* COLOR MOVE ANIMATIONS */
+@keyframes colorMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.color-move-mesh {
+  background: linear-gradient(-45deg, #03120E, #0A2C23, #145343, #843C20, #03120E);
+  background-size: 300% 300%;
+  animation: colorMove 14s ease infinite;
+}
+
+.color-move-ambient {
+  background: radial-gradient(circle at 20% 30%, rgba(200, 101, 59, 0.22) 0%, transparent 50%),
+              radial-gradient(circle at 80% 70%, rgba(28, 107, 86, 0.25) 0%, transparent 55%),
+              radial-gradient(circle at 50% 50%, rgba(204, 161, 92, 0.15) 0%, transparent 60%);
+  background-size: 200% 200%;
+  animation: colorMove 12s ease-in-out infinite;
+}
+
+/* COLORFILL TEXT ANIMATIONS */
+@keyframes textShimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.colorfill-text {
+  background: linear-gradient(
+    115deg,
+    #FFFFFF 0%,
+    #FAF7F2 20%,
+    #DE855C 40%,
+    #E4BD7A 55%,
+    #FAF7F2 75%,
+    #FFFFFF 100%
+  );
+  background-size: 220% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent !important;
+  animation: textShimmer 6s ease-in-out infinite;
+}
+
+.colorfill-text-warm {
+  background: linear-gradient(
+    115deg,
+    #DE855C 0%,
+    #F3D49B 30%,
+    #C8653B 60%,
+    #DE855C 100%
+  );
+  background-size: 220% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent !important;
+  animation: textShimmer 5s ease-in-out infinite;
+}
+
+/* =========================================================================
+   COLORFILL & COLOR FLOW ANIMATIONS (Liquid Silk & Shifting Palettes)
+   ========================================================================= */
+
+@keyframes colorFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes colorPulseGlow {
+  0%, 100% {
+    box-shadow: 0 4px 20px -2px rgba(222, 133, 92, 0.4), 0 0 15px rgba(28, 107, 86, 0.2);
+  }
+  50% {
+    box-shadow: 0 8px 30px 2px rgba(228, 189, 122, 0.55), 0 0 25px rgba(200, 101, 59, 0.35);
+  }
+}
+
+/* 1. BUTTON COLORFLOW: Liquid colorfill on hover where colors flow and change continuously */
+.btn-colorflow,
+.btn-colorfill {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: 9999px;
+  background-color: #C8653B;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 18px rgba(200, 101, 59, 0.3);
+}
+
+.btn-colorflow::before,
+.btn-colorfill::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    135deg,
+    #DE855C 0%,
+    #E4BD7A 25%,
+    #1C6B56 50%,
+    #C8653B 75%,
+    #DE855C 100%
+  );
+  background-size: 300% 300%;
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: colorFlow 2.8s ease infinite;
+  border-radius: inherit;
+}
+
+.btn-colorflow:hover,
+.btn-colorfill:hover {
+  transform: translateY(-2px);
+  animation: colorPulseGlow 3s ease-in-out infinite;
+}
+
+.btn-colorflow:hover::before,
+.btn-colorfill:hover::before {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.btn-colorflow:active,
+.btn-colorfill:active {
+  transform: translateY(0);
+}
+
+/* 2. OUTLINE BUTTON COLORFLOW: Sweeps in liquid gradient on hover */
+.btn-colorflow-outline {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: 9999px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  transition: all 0.35s ease;
+}
+
+.btn-colorflow-outline::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    135deg,
+    #DE855C 0%,
+    #E4BD7A 30%,
+    #1C6B56 70%,
+    #C8653B 100%
+  );
+  background-size: 300% 300%;
+  opacity: 0;
+  transform: translateY(100%);
+  transition: opacity 0.3s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: colorFlow 3s ease infinite;
+}
+
+.btn-colorflow-outline:hover {
+  border-color: transparent;
+  color: #FFFFFF !important;
+  box-shadow: 0 10px 25px -5px rgba(222, 133, 92, 0.4);
+  transform: translateY(-2px);
+}
+
+.btn-colorflow-outline:hover::before {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 3. NAV LINK COLORFLOW: Floating liquid pill on hover with flowing tropical colors */
+.nav-link-colorflow {
+  position: relative;
+  isolation: isolate;
+  transition: color 0.25s ease;
+}
+
+.nav-link-colorflow::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: linear-gradient(
+    135deg,
+    rgba(222, 133, 92, 0.28) 0%,
+    rgba(228, 189, 122, 0.22) 35%,
+    rgba(28, 107, 86, 0.28) 70%,
+    rgba(200, 101, 59, 0.28) 100%
+  );
+  background-size: 300% 300%;
+  border: 1px solid rgba(228, 189, 122, 0.35);
+  opacity: 0;
+  transform: scale(0.92);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: -1;
+  animation: colorFlow 3.5s ease infinite;
+}
+
+.nav-link-colorflow:hover::before {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.nav-link-colorflow:hover {
+  color: #FFFFFF !important;
+}
+
+/* Moving color border animation */
+@keyframes borderMove {
+  0% {
+    border-color: rgba(200, 101, 59, 0.4);
+    box-shadow: 0 0 25px rgba(200, 101, 59, 0.2);
+  }
+  50% {
+    border-color: rgba(28, 107, 86, 0.5);
+    box-shadow: 0 0 25px rgba(28, 107, 86, 0.25);
+  }
+  100% {
+    border-color: rgba(200, 101, 59, 0.4);
+    box-shadow: 0 0 25px rgba(200, 101, 59, 0.2);
+  }
+}
+
+.color-move-border {
+  animation: borderMove 8s ease-in-out infinite;
+}
+
+.editorial-vignette {
+  background: radial-gradient(circle at 80% 20%, rgba(222, 133, 92, 0.15) 0%, transparent 60%),
+              radial-gradient(circle at 15% 85%, rgba(28, 107, 86, 0.12) 0%, transparent 50%);
+}
+
+/* Subtle image hover zoom */
+.card-img-zoom {
+  overflow: hidden;
+}
+
+.card-img-zoom img {
+  transition: transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.card-img-zoom:hover img {
+  transform: scale(1.06);
+}
+
+/* Interactive Card Glow on Hover */
+.glow-card {
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glow-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -15px rgba(10, 44, 35, 0.16), 0 0 25px -8px rgba(200, 101, 59, 0.2);
+}
+
+/* Marquee gradient masks */
+.marquee-container {
+  mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+}
+
+/* Text balance */
+.text-balance {
+  text-wrap: balance;
+}
+
+/* Custom fine scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #03120E;
+}
+::-webkit-scrollbar-thumb {
+  background: #C8653B;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #DE855C;
+}
+
+/* Accessibility: respect user preference */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
